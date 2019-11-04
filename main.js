@@ -105,12 +105,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         //var imageData = decodeBase64Image(image);
         fs.writeFile(path + 'Instagram/' + filename, image, 'base64', function (err) {
-            console.log(err);
+            if(err) {
+                console.log(err);
+                return;
+            }
         });
         proceedImage.currentImage = index + 1;
         if (proceedImage.currentImage === proceedImage.totalImages) {
             imagesDone();
         }
+
     }
 
     let reset = function () {
