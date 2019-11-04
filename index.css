@@ -1,0 +1,99 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	background: transparent;
+}
+
+html {
+    padding-top: 16px;
+    -webkit-app-region: drag;
+}
+
+/* Use OS default fonts */
+body {
+	font-family: -apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		Oxygen-Sans,
+		Ubuntu,
+		Cantarell,
+		'Helvetica Neue',
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji',
+		'Segoe UI Symbol';
+	text-rendering: optimizeLegibility;
+    font-feature-settings: 'liga', 'clig', 'kern';
+    font-size: 24px;
+}
+
+#drag-file {
+    width: calc(100% - 30px);
+    height: calc(100vh - 46px);
+    border: 2px solid #731e82;
+    color: #731e82;
+    margin: 15px;
+    text-align: center;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+button.btn {
+    margin-top: 24px;
+    background: #b46ac1;
+    color: white;
+    font-size: 19px;
+    text-transform: uppercase;
+    padding: 12px;
+    border: 1px solid #731e82;
+    border-radius: 4px;
+}
+
+button.btn:hover {
+    background: #731e82;
+    cursor: pointer;
+}
+
+body.dragover {
+    background: rgba(115,30,130, 0.5);
+}
+body.dragover #drag-file {
+    border: 2px dashed white;
+    color: white;
+}
+
+body.done .ready {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.proceed .dropMessage {
+    display: none;
+}
+
+body.proceed #imagesProceeded {
+    display: flex;
+    flex-direction: column;
+}
+
+body.proceed #imagesProceeded .loader {
+    margin-bottom: 20px;
+}
+
+body.done .dropMessage,
+body #imagesProceeded,
+body .ready {
+    display: none;
+}
