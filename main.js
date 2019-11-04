@@ -1,4 +1,5 @@
 const fs = window.require('fs');
+const sharp = window.require('sharp');
 
 document.addEventListener("DOMContentLoaded", function () {
     var holder = document.getElementById('drag-file');
@@ -55,43 +56,61 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(path)
         let imagePath = path.replace(/[^\/]*$/, "");
         let fileName = path.replace(/^.*(\\|\/|\:)/, '');
-        console.log(imagePath, fileName)
+        console.log(imagePath, fileName);
 
-        var worker = new Worker('jimp-worker.js');
-        worker.onmessage = function (e) {
+        var resized = sharp(path);
 
-            // append a new img element using the base 64 image
-            proceedImage.currentImage = proceedImage.currentImage + 1;
-            if (proceedImage.currentImage == proceedImage.totalImages) {
-                imagesDone();
-            }
-            saveImage(e.data, imagePath, fileName);
-        };
-        worker.postMessage(path);
+        resized.metadata()
+        .then(function(metadata) {
+          console.log(metadata)
+          if (metadata.width < metadata.height) {
+            sharp(path)
+                .toFormat('png')
+                .resize(1080, 1350, {
+                    fit: 'contain',
+                    background: {r: 0, g: 0, b: 0, alpha: 0.3}
+                }).raw().toBuffer().then(function (buffer) {
+                    resized
+                    .resize(1080, 1350, {
+                        fit: 'cover'
+                    })
+                    .blur(20)
+                    .composite([{
+                        input: buffer,
+                        gravity: 'centre',
+                        blend: 'over',
+                        raw : {width: 1080, height: 1350, channels: 4}
+                    }])
+                    .toBuffer()
+                    .then( data => {
+                        console.log(data)
+                        saveImage(data, imagePath, fileName, index);
+                    })
+                    .catch( err => {
+                        console.log(err);
+                    });
+                });
+          } else {
+            resized.toBuffer().then(function(buffer) {
+                saveImage(buffer, imagePath, fileName, index);
+            })
+          }
+        })
+
     }
 
-    let saveImage = function (image, path, filename) {
+    let saveImage = function (image, path, filename, index) {
         if (!fs.existsSync(path + 'Instagram/')) {
             fs.mkdirSync(path + 'Instagram/');
         }
-        var imageData = decodeBase64Image(image);
-        fs.writeFile(path + 'Instagram/' + filename, imageData.data, 'base64', function (err) {
+        //var imageData = decodeBase64Image(image);
+        fs.writeFile(path + 'Instagram/' + filename, image, 'base64', function (err) {
             console.log(err);
         });
-    }
-
-    let decodeBase64Image = function (dataString) {
-        var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
-            response = {};
-
-        if (matches.length !== 3) {
-            return new Error('Invalid input string');
+        proceedImage.currentImage = index + 1;
+        if (proceedImage.currentImage === proceedImage.totalImages) {
+            imagesDone();
         }
-
-        response.type = matches[1];
-        response.data = new Buffer(matches[2], 'base64');
-
-        return response;
     }
 
     let reset = function () {
