@@ -83,7 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     }])
                     .toBuffer()
                     .then( data => {
-                        console.log(data)
+						console.log(data)
+						proceedImage.currentImage = index + 1;
                         saveImage(data, imagePath, fileName, index);
                     })
                     .catch( err => {
@@ -92,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
           } else {
             resized.toBuffer().then(function(buffer) {
-                saveImage(buffer, imagePath, fileName, index);
+				saveImage(buffer, imagePath, fileName, index);
             })
           }
         })
@@ -102,18 +103,19 @@ document.addEventListener("DOMContentLoaded", function () {
     let saveImage = function (image, path, filename, index) {
         if (!fs.existsSync(path + 'Instagram/')) {
             fs.mkdirSync(path + 'Instagram/');
-        }
+		}
         //var imageData = decodeBase64Image(image);
         fs.writeFile(path + 'Instagram/' + filename, image, 'base64', function (err) {
-            if(err) {
-                console.log(err);
+			if(err) {
+				console.log(err);
                 return;
+			}
+
+			if (proceedImage.currentImage === proceedImage.totalImages) {
+                imagesDone();
             }
         });
-        proceedImage.currentImage = index + 1;
-        if (proceedImage.currentImage === proceedImage.totalImages) {
-            imagesDone();
-        }
+
 
     }
 
