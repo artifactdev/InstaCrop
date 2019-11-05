@@ -64,7 +64,19 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(function(metadata) {
           console.log(metadata)
           if (metadata.width < metadata.height) {
-            sharp(path)
+            generateImage(resized, path, imagePath, fileName, index);
+          } else {
+            resized.toBuffer().then(function(buffer) {
+				proceedImage.currentImage = index + 1;
+				saveImage(buffer, imagePath, fileName, index);
+            })
+          }
+        })
+
+	}
+
+	let generateImage = function(resized, path, imagePath, fileName, index) {
+		sharp(path)
                 .toFormat('png')
                 .resize(1080, 1350, {
                     fit: 'contain',
@@ -91,14 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         console.log(err);
                     });
                 });
-          } else {
-            resized.toBuffer().then(function(buffer) {
-				saveImage(buffer, imagePath, fileName, index);
-            })
-          }
-        })
-
-    }
+	}
 
     let saveImage = function (image, path, filename, index) {
         if (!fs.existsSync(path + 'Instagram/')) {
