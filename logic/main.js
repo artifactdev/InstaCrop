@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 generateImage(resized, path, imagePath, fileName, index);
             } else {
                 resized.toBuffer().then(function(buffer) {
-                    proceedImage.currentImage = index + 1;
+                    proceedImage.currentImage = proceedImage.currentImage + 1;
                     saveImage(buffer, imagePath, fileName, index);
                 });
             }
