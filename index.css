@@ -7,7 +7,14 @@ body {
 
 html {
     padding-top: 16px;
+}
+
+.dragbar {
     -webkit-app-region: drag;
+    width: 100%;
+    height: 22px;
+    position: absolute;
+    top: 0;
 }
 
 /* Use OS default fonts */

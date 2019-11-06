@@ -10,6 +10,7 @@
     <script src="logic/settings.js"></script>
 </head>
 <body>
+        <div class="dragbar"></div>
     <div id="settingForm">
             <a class="close" href="./index.html">
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -35,22 +36,22 @@
             </a>
         <div class="form-group">
             <label>Desired width</label>
-            <input type="text" rv-value="config.width">
+            <input type="number" rv-value="config.width">
             <span class="sublabel">Pixels</span>
         </div>
         <div class="form-group">
             <label>Desired height</label>
-            <input type="text" rv-value="config.height">
+            <input type="number" rv-value="config.height">
             <span class="sublabel">Pixels</span>
         </div>
         <div class="form-group half">
             <label>Background Blur</label>
-            <input type="text" rv-value="config.blur">
+            <input type="number" rv-value="config.blur"  min="1" max="100">
             <span class="sublabel">0-100</span>
         </div>
         <div class="form-group half">
             <label>Background Darker</label>
-            <input type="text" rv-value="config.darkeness">
+            <input type="number" rv-value="config.darkeness"  min="0.0" max="1.0">
             <span class="sublabel">(0 - 1)</span>
         </div>
         <div class="button-group">
