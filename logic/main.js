@@ -1,6 +1,15 @@
 const fs = window.require("fs");
 const sharp = window.require("sharp");
 
+const defaultConfig = {
+    width: 1080,
+    height: 1350,
+    blur: 20,
+    darkeness : 0.3
+};
+
+let config = defaultConfig;
+
 document.addEventListener("DOMContentLoaded", function() {
     var holder = document.getElementById("drag-file");
     var body = document.getElementsByTagName("body")[0];
@@ -77,9 +86,9 @@ document.addEventListener("DOMContentLoaded", function() {
     let generateImage = function(resized, path, imagePath, fileName, index) {
         sharp(path)
             .toFormat("png")
-            .resize(1080, 1350, {
+            .resize(config.width, config.height, {
                 fit: "contain",
-                background: { r: 0, g: 0, b: 0, alpha: 0.3 }
+                background: { r: 0, g: 0, b: 0, alpha: config.darkeness }
             })
             .raw()
             .toBuffer()
@@ -96,16 +105,16 @@ document.addEventListener("DOMContentLoaded", function() {
         index
     ) {
         resized
-            .resize(1080, 1350, {
+            .resize(config.width, config.height, {
                 fit: "cover"
             })
-            .blur(20)
+            .blur(config.blur)
             .composite([
                 {
                     input: buffer,
                     gravity: "centre",
                     blend: "over",
-                    raw: { width: 1080, height: 1350, channels: 4 }
+                    raw: { width: config.width, height: config.height, channels: 4 }
                 }
             ])
             .toBuffer()
