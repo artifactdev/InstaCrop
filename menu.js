@@ -9,10 +9,11 @@ const {
 	openNewGitHubIssue,
 	debugInfo
 } = require('electron-util');
+const {BrowserWindow} = require('electron');
 const config = require('./config');
 
 const showPreferences = () => {
-	// Show the app's preferences here
+
 };
 
 const helpSubmenu = [
