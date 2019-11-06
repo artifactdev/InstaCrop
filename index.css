@@ -43,6 +43,18 @@ body {
     justify-content: center;
 }
 
+.settingsLink {
+    color: #d0bad4;
+    position: absolute;
+    top: 40px;
+    right: 24px;
+}
+
+.settingsLink:hover {
+    color: #731e82;
+    cursor: pointer;
+}
+
 button.btn {
     margin-top: 24px;
     background: #b46ac1;

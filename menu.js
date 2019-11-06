@@ -9,12 +9,16 @@ const {
 	openNewGitHubIssue,
 	debugInfo
 } = require('electron-util');
-const {BrowserWindow} = require('electron');
 const config = require('./config');
 
 const showPreferences = () => {
-
-};
+    //mainWindow.loadURL(url.format({
+    //    pathname: path.join(__dirname, './settings.html'),
+    //    protocol: 'file:',
+    //    slashes: true
+//
+    //  }));
+}
 
 const helpSubmenu = [
 	openUrlMenuItem({
