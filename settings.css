@@ -1,0 +1,145 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	background: transparent;
+}
+
+html {
+    padding-top: 16px;
+    -webkit-app-region: drag;
+}
+
+/* Use OS default fonts */
+body {
+	font-family: -apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		Oxygen-Sans,
+		Ubuntu,
+		Cantarell,
+		'Helvetica Neue',
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji',
+		'Segoe UI Symbol';
+	text-rendering: optimizeLegibility;
+    font-feature-settings: 'liga', 'clig', 'kern';
+    font-size: 24px;
+}
+
+#settingForm {
+    width: calc(100% - 30px);
+    height: calc(100vh - 46px);
+    border: 2px solid #731e82;
+    color: #731e82;
+    margin: 15px;
+    padding-top: 34px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.form-group {
+    box-sizing: border-box;
+    padding: 8px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column
+}
+
+.form-group.half {
+    float: left;
+    width: 50%;
+}
+
+input {
+    box-sizing: border-box;
+    background-color: #efefef;
+    border-radius: 8px;
+    border-width: 0;
+    padding: 4px 12px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    transition: all 300ms;
+    border: 1px solid #d0bad4;
+    font-size: 20px;
+}
+
+.sublabel {
+    display: inline-block;
+    position: absolute;
+    width: 58px;
+    text-align: center;
+    height: 40px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    z-index: 1000;
+    background: #f7f7f7;
+    font-size: 17px;
+    bottom: 8px;
+    right: 9px;
+    color: #b5b5b5;
+    border: 1px solid #d0bad4;
+    padding: 8px 0;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid #731e82;
+}
+
+label {
+    box-sizing: border-box;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 6px;
+    font-size: 0.75em;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.close {
+    position: absolute;
+    top: 40px;
+    right: 24px;
+    color: #ae6db9;
+}
+
+.settingsLink:hover {
+    cursor: pointer;
+    color: #731e82;
+}
+
+.button-group {
+    position: absolute;
+    bottom: 17px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: calc(100% - 34px );
+    display: flex;
+    overflow: hidden;
+}
+
+button {
+    width: 50%;
+    font-size: 19px;
+    box-sizing: border-box;
+    background: #731e82;
+    color: white;
+    padding: 14px;
+    border: 0;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #591865;
+}
+
+button:first-child {
+    border-right: 1px solid #b846cc;
+}
