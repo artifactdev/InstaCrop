@@ -5,13 +5,15 @@ document.addEventListener("DOMContentLoaded", function() {
     var holder = document.getElementById("drag-file");
     var body = document.getElementsByTagName("body")[0];
     var resetButton = document.getElementById("resetButton");
+    var successElement = document.getElementById("success");
     var proceedElement = document.getElementById("imagesProceeded");
     var proceedImage = {
-        currentImage: 0,
-        totalImages: 0
+        totalImages: 0,
+        savedImage: 0
     };
 
     tinybind.bind(proceedElement, { proceedImage: proceedImage });
+    tinybind.bind(successElement, { proceedImage: proceedImage });
 
     resetButton.addEventListener("click", function() {
         reset();
@@ -66,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 generateImage(resized, path, imagePath, fileName, index);
             } else {
                 resized.toBuffer().then(function(buffer) {
-                    proceedImage.currentImage = proceedImage.currentImage + 1;
                     saveImage(buffer, imagePath, fileName, index);
                 });
             }
@@ -110,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function() {
             .toBuffer()
             .then(data => {
                 console.log(data);
-                proceedImage.currentImage = index + 1;
                 saveImage(data, imagePath, fileName, index);
             })
             .catch(err => {
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!fs.existsSync(path + "Instagram/")) {
             fs.mkdirSync(path + "Instagram/");
         }
-        //var imageData = decodeBase64Image(image);
+        proceedImage.savedImage = proceedImage.savedImage + 1;
         fs.writeFile(path + "Instagram/" + filename, image, "base64", function(
             err
         ) {
@@ -130,15 +130,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log(err);
                 return;
             }
-
-            if (proceedImage.currentImage === proceedImage.totalImages) {
+            if (proceedImage.savedImage === proceedImage.totalImages) {
                 imagesDone();
             }
         });
     };
 
     let reset = function() {
-        proceedImage.currentImage = 0;
+        proceedImage.savedImage = 0;
         proceedImage.totalImages = 0;
         body.classList.remove("done");
     };
