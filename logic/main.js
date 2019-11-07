@@ -100,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let generateImage = function(resized, path, imagePath, fileName, index) {
         sharp(path)
-            .toFormat("png")
             .resize(config.width, config.height, {
                 fit: "contain",
                 background: { r: 0, g: 0, b: 0, alpha: config.darkeness }
