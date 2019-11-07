@@ -1,10 +1,10 @@
 {
 	"name": "InstaCrop",
 	"productName": "InstaCrop",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "No Crop for Instagram",
 	"license": "MIT",
-	"repository": "sindresorhus/electron-boilerplate",
+	"repository": "artifactdev/InstaCrop",
 	"author": {
 		"name": "Jerry Arnstadt",
 		"email": "j.arnstadt@art-ifact.de",
@@ -45,7 +45,7 @@
 		"releaseDraft": false
 	},
 	"build": {
-		"appId": "com.company.AppName",
+		"appId": "com.artifactdev.InstaCrop",
 		"mac": {
 			"category": "public.app-category.social-networking",
 			"darkModeSupport": true

@@ -23,11 +23,7 @@ const showPreferences = () => {
 const helpSubmenu = [
 	openUrlMenuItem({
 		label: 'Website',
-		url: 'https://github.com/sindresorhus/electron-boilerplate'
-	}),
-	openUrlMenuItem({
-		label: 'Source Code',
-		url: 'https://github.com/sindresorhus/electron-boilerplate'
+		url: 'https://github.com/artifactdev/InstaCrop'
 	}),
 	{
 		label: 'Report an Issue…',
@@ -41,8 +37,8 @@ const helpSubmenu = [
 ${debugInfo()}`;
 
 			openNewGitHubIssue({
-				user: 'sindresorhus',
-				repo: 'electron-boilerplate',
+				user: 'artifactdev',
+				repo: 'InstaCrop',
 				body
 			});
 		}
@@ -56,7 +52,7 @@ if (!is.macos) {
 		},
 		aboutMenuItem({
 			icon: path.join(__dirname, 'static', 'icon.png'),
-			text: 'Created by Your Name'
+			text: 'Created by ART-ifact / Jerry Arnstadt'
 		})
 	);
 }

@@ -1,5 +1,7 @@
 # InstaCrop
 
+We all know, the image cropping of portrait pictures on Instagram and other services is ridiculous. So I build this app to get the pictures in the right format without the need to crop them. Simply drop a bunch of images to the app and they will be processed and saved in the same path in a new folder.
+
 > Boilerplate to kickstart creating an app with [Electron](https://github.com/electron/electron)
 
 See [awesome-electron](https://github.com/sindresorhus/awesome-electron) for more useful Electron resources.
