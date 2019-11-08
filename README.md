@@ -11,6 +11,12 @@ See [awesome-electron](https://github.com/sindresorhus/awesome-electron) for mor
 
 See [Caprine](https://github.com/sindresorhus/caprine) for a production app based on this boilerplate.
 
+## Download 
+
+- [MacOS](https://github.com/artifactdev/InstaCrop/releases/download/v1.0.0/InstaCrop-1.0.0.dmg)
+- [Linux](https://github.com/artifactdev/InstaCrop/releases/download/v1.0.0/InstaCrop_1.0.0_amd64.deb)
+- [Windows](https://github.com/artifactdev/InstaCrop/releases/download/v1.0.0/InstaCrop.Setup.1.0.0.exe)
+
 
 ## Features
 
