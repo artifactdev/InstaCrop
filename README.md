@@ -5,12 +5,6 @@ We all know, the image cropping of portrait pictures on Instagram and other serv
 ![alt text](https://www.jerry-arnstadt.de/wp-content/uploads/2019/11/InstaCrop-Before-After.jpg "Before and After")
 
 
-> Boilerplate to kickstart creating an app with [Electron](https://github.com/electron/electron)
-
-See [awesome-electron](https://github.com/sindresorhus/awesome-electron) for more useful Electron resources.
-
-See [Caprine](https://github.com/sindresorhus/caprine) for a production app based on this boilerplate.
-
 ## Install
 
 *macOS 10.10+, Linux, and Windows 7+ are supported (64-bit only).*
