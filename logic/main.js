@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let handleImage = function(path, index) {
         console.log(path);
-        let imagePath = path.replace(/[^\/]*$/, "");
+        let imagePath = path.match(/^.*(\\|\/|\:)/);
         let fileName = path.replace(/^.*(\\|\/|\:)/, "");
         console.log(imagePath, fileName);
 
@@ -143,11 +143,11 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     let saveImage = function(image, path, filename, index) {
-        if (!fs.existsSync(path + "Instagram/")) {
-            fs.mkdirSync(path + "Instagram/");
+        if (!fs.existsSync(path[0] + "Instagram/")) {
+            fs.mkdirSync(path[0] + "Instagram/");
         }
         proceedImage.savedImage = proceedImage.savedImage + 1;
-        fs.writeFile(path + "Instagram/" + filename, image, "base64", function(
+        fs.writeFile(path[0] + "Instagram/" + filename, image, "base64", function(
             err
         ) {
             if (err) {
